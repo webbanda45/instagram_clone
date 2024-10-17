@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5fa14bb4f0.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="app">
+        <header>
+            <h1>Instagram</h1>
+            <div class="icons">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-brands fa-facebook-messenger"></i>
+            </div>
+        </header>
+        <div class="main" id="main">
+            <section class="home" id="homeTab">
+                <div class="storiyan">
+                    <div class="story" id="user">
+                        <img src="istockphoto-1300845620-612x612.jpg" alt="User Story" id="userStoryImg">
+                        <input type="file" id="uploadStory" accept="image/*" style="display:none;">
+                        <label for="uploadStory" class="upload-label">
+                            <i class="fa-solid fa-plus" style="color: black; font-size: 24px; cursor: pointer;"></i>
+                        </label>
+                    </div>
+                    <div class="story" data-story="0">
+                        <img src="IMG-20240220-WA0024.jpg" alt="Story Image 1">
+                    </div>
+                    <div class="story" data-story="1">
+                        <img src="https://www.nmspacemuseum.org/wp-content/uploads/2019/03/Elon_Musk.jpg" alt="Story Image 2">
+                    </div>
+                    <div class="story" data-story="2">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAMBUmnBovAnuo2ZQNq8uX3O3inspjaf-Kodrnh6RZUn0kHuP" alt="Story Image 3">
+                    </div>
+                    <div class="story" data-story="3">
+                        <img src="https://www.financialexpress.com/wp-content/uploads/2024/09/Mukesh-Ambani.jpg" alt="Story Image 4">
+                    </div>
+                </div>
+                <h1 style="margin-top: 150px; text-align: center;">APP under construction <br></h1>
+                <h4 style="margin-top: 20px; text-align: center;">This is only a structure, not the exact app with all functions.</h4>
+            </section>
+            <section class="search" id="searchTab">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search" id="search-input">
+                </div>                
+            </section>
+            <section class="reels" id="reelTab">
+                <div class="reels-container" id="reelsContainer">
+                    <h2 style="text-align: center; margin-top: 150px;">under construction</h2>
+                </div>                
+            </section>
+            <section class="profile" id="profileTab">
+                <h1>profile</h1>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class="icons">
+            <i class="fa-solid fa-house" id="homeIcon"></i>
+            <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-clapperboard" id="reelIcon"></i>
+            <i class="fa-solid fa-user" id="profileIcon"></i>
+        </div>
+    </footer>
+
+    <!-- Fullscreen Story Viewer -->
+    <div id="storyViewer" class="story-viewer hidden">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="story-content">
+            <img id="fullscreenImage" src="" alt="Story Fullscreen Image">
+        </div>
+        <div class="close-button" id="closeButton">&times;</div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+                    css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    color: #262626;
+}
+
+body::-webkit-scrollbar, .main::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    border-bottom: 1px solid #000;
+}
+
+header h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.app {
+    width: 100%;
+    max-width: 935px;
+    margin: 0 auto;
+    background: black;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main {
+    background-color: #000;
+    color: #fff;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.icons i {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    background-color: #000;
+    border-top: 2px solid #131111;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 935px;
+}
+
+footer .icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+footer .icons i:hover {
+    color: rgb(238, 216, 216);
+    transform: scale(1.2);
+}
+
+.storiyan {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+
+.storiyan::-webkit-scrollbar{
+    display: none;
+}
+
+.story {
+    width: 100px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(salmon,crimson,greenyellow,green,yellow, black, orange, red, pink, purple);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.story img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+}
+
+.upload-label {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.story-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.story-content {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+#fullscreenImage {
+    width: 100%;
+    height: auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.progress {
+    height: 100%;
+    background-color: #fff;
+    width: 0%;
+    transition: width 10s linear;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* max-width: 300px; */
+    background-color: #efefef;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.search-container i {
+    font-size: 1rem;
+    color: #8e8e8e;
+    margin-right: 10px;
+}
+
+.search-container #search-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #262626;
+}
+  
+
+                    js
+
+// Story system
+const stories = document.querySelectorAll('.story');
+const storyViewer = document.getElementById('storyViewer');
+const fullscreenImage = document.getElementById('fullscreenImage');
+const progressBar = document.getElementById('progress');
+const closeButton = document.getElementById('closeButton');
+const uploadStory = document.getElementById('uploadStory');
+const userStoryImg = document.getElementById('userStoryImg');
+
+// Check localStorage for user's story and display it
+const savedUserStory = localStorage.getItem('userStory');
+if (savedUserStory) {
+    userStoryImg.src = savedUserStory; // Load the user's story from localStorage
+    uploadStory.disabled = true; // Disable the upload if a story is already saved
+    document.querySelector('.upload-label').style.display = 'none'; // Hide the upload label
+}
+
+function showStory(index) {
+    const storyImage = stories[index].querySelector('img').src;
+    fullscreenImage.src = storyImage;
+    storyViewer.classList.remove('hidden');
+    startStoryTimer();
+    startProgressBar();
+}
+
+function startStoryTimer() {
+    clearTimeout(storyTimeout);
+    storyTimeout = setTimeout(() => {
+        closeStoryViewer();
+    }, 10000); // Close story after 10 seconds
+}
+
+function closeStoryViewer() {
+    storyViewer.classList.add('hidden');
+    clearTimeout(storyTimeout);
+    resetProgressBar();
+}
+
+function startProgressBar() {
+    progressBar.style.width = '0%';
+    setTimeout(() => {
+        progressBar.style.width = '100%';
+    }, 0);
+}
+
+function resetProgressBar() {
+    progressBar.style.width = '0%';
+}
+
+stories.forEach((story, index) => {
+    story.addEventListener('click', () => showStory(index));
+});
+
+closeButton.addEventListener('click', closeStoryViewer);
+
+// Handle Story Upload
+uploadStory.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const storyUrl = e.target.result;
+            userStoryImg.src = storyUrl; // Set uploaded image to user's story
+            localStorage.setItem('userStory', storyUrl); // Save the story in localStorage
+
+            // Disable further uploads
+            uploadStory.disabled = true;
+            document.querySelector('.upload-label').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Tab Switching System
+
+// icons 
+const homeIcon = document.getElementById('homeIcon');
+const searchIcon = document.getElementById('searchIcon');
+const reelIcon = document.getElementById('reelIcon');
+const profileIcon = document.getElementById('profileIcon');
+
+// tabsicons
+const homeTab = document.getElementById('homeTab');
+const searchTab = document.getElementById('searchTab');
+const reelTab = document.getElementById('reelTab');
+const profiletab = document.getElementById('profileTab');
+
+
+const iconContainer = document.querySelector('footer');
+
+// tabs
+homeTab.style.display = 'block';
+searchTab.style.display = 'none';
+reelTab.style.display = 'none';
+profiletab.style.display = 'none';
+homeIcon.style.transform = 'scale(1.3)';
+homeIcon.style.color = 'rgb(252, 90, 90)';
+
+// after select 
+// rgb(252, 90, 90)
+// transform: scale(1.2);
+
+homeIcon.addEventListener('click', () => {
+    // switching tabs
+    homeTab.style.display = 'block';
+    searchTab.style.display = 'none';
+    reelTab.style.display = 'none';
+    profiletab.style.display = 'none';
+
+    // effect 
+    homeIcon.style.transform = 'scale(1.3)';
+    homeIcon.style.color = 'rgb(252, 90, 90)';
+    searchIcon.style.transform = 'none';
+    searchIcon.style.color = 'white';
+    reelIcon.style.transform = 'none';
+    reelIcon.style.color = 'white';
+    profileIcon.style.transform = 'none';
+    profileIcon.style.color = 'white';
+});
+
+searchIcon.addEventListener('click', () => {
+    // switching tabs
+    searchTab.style.display = 'block';
+    homeTab.style.display = 'none';
+    reelTab.style.display = 'none';
+    profiletab.style.display = 'none';
+
+    // effect 
+    homeIcon.style.transform = 'none';
+    homeIcon.style.color = 'white';
+    searchIcon.style.transform = 'scale(1.3)';
+    searchIcon.style.color = 'rgb(252, 90, 90)';
+    reelIcon.style.transform = 'none';
+    reelIcon.style.color = 'white';
+    profileIcon.style.transform = 'none';
+    profileIcon.style.color = 'white';
+});
+
+reelIcon.addEventListener('click', () => {
+    // switching tabs
+    reelTab.style.display = 'block';
+    homeTab.style.display = 'none';
+    searchTab.style.display = 'none';
+    profiletab.style.display = 'none';
+
+    // effect 
+    homeIcon.style.transform = 'none';
+    homeIcon.style.color = 'white';
+    searchIcon.style.transform = 'none';
+    searchIcon.style.color = 'white';
+    reelIcon.style.transform = 'scale(1.3)';
+    reelIcon.style.color = 'rgb(252, 90, 90)';
+    profileIcon.style.transform = 'none';
+    profileIcon.style.color = 'white';
+});
+
+profileIcon.addEventListener('click', () => {
+    // switching tabs
+    homeTab.style.display = 'none';
+    searchTab.style.display = 'none';
+    reelTab.style.display = 'none';
+    profiletab.style.display = 'block';
+
+    // effect     
+    homeIcon.style.transform = 'none';
+    homeIcon.style.color = 'white';
+    searchIcon.style.transform = 'none';
+    searchIcon.style.color = 'white';
+    reelIcon.style.transform = 'none';
+    reelIcon.style.color = 'white';
+    profileIcon.style.transform = 'scale(1.3)';
+    profileIcon.style.color = 'rgb(252, 90, 90)';
+});
+

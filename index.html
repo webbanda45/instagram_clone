@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5fa14bb4f0.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="app">
+        <header>
+            <h1>Instagram</h1>
+            <div class="icons">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-brands fa-facebook-messenger"></i>
+            </div>
+        </header>
+        <div class="main" id="main">
+            <section class="home" id="homeTab">
+                <div class="storiyan">
+                    <div class="story" id="user">
+                        <img src="istockphoto-1300845620-612x612.jpg" alt="User Story" id="userStoryImg">
+                        <input type="file" id="uploadStory" accept="image/*" style="display:none;">
+                        <label for="uploadStory" class="upload-label">
+                            <i class="fa-solid fa-plus" style="color: black; font-size: 24px; cursor: pointer;"></i>
+                        </label>
+                    </div>
+                    <div class="story" data-story="0">
+                        <img src="IMG-20240220-WA0024.jpg" alt="Story Image 1">
+                    </div>
+                    <div class="story" data-story="1">
+                        <img src="https://www.nmspacemuseum.org/wp-content/uploads/2019/03/Elon_Musk.jpg" alt="Story Image 2">
+                    </div>
+                    <div class="story" data-story="2">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAMBUmnBovAnuo2ZQNq8uX3O3inspjaf-Kodrnh6RZUn0kHuP" alt="Story Image 3">
+                    </div>
+                    <div class="story" data-story="3">
+                        <img src="https://www.financialexpress.com/wp-content/uploads/2024/09/Mukesh-Ambani.jpg" alt="Story Image 4">
+                    </div>
+                </div>
+                <h1 style="margin-top: 150px; text-align: center;">APP under construction <br></h1>
+                <h4 style="margin-top: 20px; text-align: center;">This is only a structure, not the exact app with all functions.</h4>
+            </section>
+            <section class="search" id="searchTab">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search" id="search-input">
+                </div>                
+            </section>
+            <section class="reels" id="reelTab">
+                <div class="reels-container" id="reelsContainer">
+                    <h2 style="text-align: center; margin-top: 150px;">under construction</h2>
+                </div>                
+            </section>
+            <section class="profile" id="profileTab">
+                <h1>profile</h1>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class="icons">
+            <i class="fa-solid fa-house" id="homeIcon"></i>
+            <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-clapperboard" id="reelIcon"></i>
+            <i class="fa-solid fa-user" id="profileIcon"></i>
+        </div>
+    </footer>
+
+    <!-- Fullscreen Story Viewer -->
+    <div id="storyViewer" class="story-viewer hidden">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="story-content">
+            <img id="fullscreenImage" src="" alt="Story Fullscreen Image">
+        </div>
+        <div class="close-button" id="closeButton">&times;</div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
